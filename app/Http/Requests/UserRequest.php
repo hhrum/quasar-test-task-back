@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'Required|min:3|string',
             'sex' => 'Required|string',
-            'birthday' => 'Required|Date',
+            'birthday' => 'Required|Date|before:today',
             'phone'=> 'Required|regex:/^\+\d\(\d{3}\)-\d{3}-\d{4}$/i|unique',
         ];
     }
