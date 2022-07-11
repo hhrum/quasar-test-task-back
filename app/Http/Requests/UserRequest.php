@@ -24,10 +24,10 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'Required',
-            'sex' => 'Required',
+            'name' => 'Required|min:3|string',
+            'sex' => 'Required|string',
             'birthday' => 'Required|Date',
-            'phone'=> 'Required|regex:/^\+\d\(\d{3}\)-\d{3}-\d{4}$/i',
+            'phone'=> 'Required|regex:/^\+\d\(\d{3}\)-\d{3}-\d{4}$/i|unique',
         ];
     }
 }
