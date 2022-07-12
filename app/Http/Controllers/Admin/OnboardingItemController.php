@@ -95,11 +95,7 @@ class OnboardingItemController extends Controller
      */
     public function destroy($id)
     {
-        $card = OnboardingItem::find($id);
-        if ($card->image) {
-            Storage::delete($card->image);
-        }
-        $card->delete();
+        OnboardingItem::find($id)->delete();
         return redirect()->route('admin.index');
     }
 }
