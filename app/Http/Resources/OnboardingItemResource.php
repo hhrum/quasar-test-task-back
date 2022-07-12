@@ -17,7 +17,6 @@ class OnboardingItemResource extends JsonResource
         return [
             'text' => $this->text,
             'image' => $this->image,
-            'next_item' => $this->next_item,
         ];
     }
 }
