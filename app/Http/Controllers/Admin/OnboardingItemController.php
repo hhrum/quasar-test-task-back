@@ -43,8 +43,8 @@ class OnboardingItemController extends Controller
             $path = $request->file('image')->store('images', 'public');
             $data['image'] = $path;
         }
-        OnboardingItem::create($data);
-        return redirect()->route('admin.index');
+        $card = OnboardingItem::create($data);
+        return redirect()->route('admin.show', ['admin' => $card->id]);
     }
 
     /**
@@ -89,7 +89,11 @@ class OnboardingItemController extends Controller
      */
     public function destroy($id)
     {
-        OnboardingItem::find($id)->delete();
+        $card = OnboardingItem::find($id);
+        if ($card->image) {
+            Storage::delete($card->image);
+        }
+        $card->delete();
         return redirect()->route('admin.index');
     }
 }
