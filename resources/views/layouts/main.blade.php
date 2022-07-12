@@ -11,8 +11,8 @@
     <title>Onboarding</title>
     <style>
         table {
-            /*table-layout: fixed;*/
-            /*width:100%*/
+            table-layout: fixed;
+            width:100%
         }
         td {
             word-wrap:break-word;
