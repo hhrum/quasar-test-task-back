@@ -15,7 +15,6 @@ class OnboardingItemFactory extends Factory
     {
         return [
             'text' => $this->faker->sentence(10,20),
-            'image' => '/',
         ];
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OnboardingItemRequest;
 use App\Models\OnboardingItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OnboardingItemController extends Controller
 {
@@ -15,7 +17,7 @@ class OnboardingItemController extends Controller
      */
     public function index()
     {
-        return view('admin.index', ['boardsList' => OnboardingItem::paginate(5)]);
+        return view('admin.index', ['boardsList' => OnboardingItem::paginate(7)]);
     }
 
     /**
@@ -34,9 +36,15 @@ class OnboardingItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OnboardingItemRequest $request)
     {
-        //
+        $data = $request->all();
+        if (isset($request->image)) {
+            $path = $request->file('image')->store('images', 'public');
+            $data['image'] = $path;
+        }
+        OnboardingItem::create($data);
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -47,7 +55,7 @@ class OnboardingItemController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.show', ['card' => OnboardingItem::find($id) ]);
     }
 
     /**
@@ -81,6 +89,7 @@ class OnboardingItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        OnboardingItem::find($id)->delete();
+        return redirect()->route('admin.index');
     }
 }
