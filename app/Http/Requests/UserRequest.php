@@ -26,10 +26,10 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'Required|min:3|string',
-            'sex' => [Rule::in(User::SEX),'Required|string'] ,
-            'birthday' => 'Required|Date|before:today',
-            'phone'=> 'Required|regex:/^\+\d\(\d{3}\)-\d{3}-\d{4}$/i|unique',
+            'name' => 'required|min:3|string',
+            'sex' => [Rule::in(User::SEX),'required'],
+            'birthday' => 'required|date|before:today',
+            'phone'=> 'required|regex:/^\+\d\(\d{3}\)-\d{3}-\d{4}$/i',
         ];
     }
 }

@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('boards', OnboardingItemController::class);
-Route::resource('users', UserController::class);
+Route::apiResource('boards', OnboardingItemController::class);
+Route::apiResource('users', UserController::class);
 
 Route::get('users/getSex/{id}', [UserController::class, 'getSex']);
