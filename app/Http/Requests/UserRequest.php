@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -25,7 +27,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'Required|min:3|string',
-            'sex' => 'Required|string',
+            'sex' => [Rule::in(User::SEX),'Required|string'] ,
             'birthday' => 'Required|Date|before:today',
             'phone'=> 'Required|regex:/^\+\d\(\d{3}\)-\d{3}-\d{4}$/i|unique',
         ];
