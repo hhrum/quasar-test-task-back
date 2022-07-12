@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\OnboardingItemResource;
+use App\Models\OnboardingItem;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class OnboardingItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return OnboardingItemResource::collection(OnboardingItem::all());
     }
 
     /**
@@ -24,9 +25,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        return User::create($request->validated());
     }
 
     /**
@@ -61,10 +61,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getSex($id)
-    {
-        return User::select('sex')->findOrFail($id);
     }
 }
