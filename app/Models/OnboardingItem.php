@@ -11,8 +11,4 @@ class OnboardingItem extends Model
     public $timestamps = false;
     protected $guarded = [];
 
-    public function next_item()
-    {
-        return $this->belongsTo(OnboardingItem::class);
-    }
 }

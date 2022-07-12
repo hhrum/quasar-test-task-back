@@ -17,7 +17,6 @@ class CreateOnboardingItemsTable extends Migration
             $table->id();
             $table->string('text');
             $table->string('image');
-            $table->integer('next_item');
         });
     }
 

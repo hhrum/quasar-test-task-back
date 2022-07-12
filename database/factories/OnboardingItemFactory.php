@@ -16,7 +16,6 @@ class OnboardingItemFactory extends Factory
         return [
             'text' => $this->faker->sentence(10,20),
             'image' => '/',
-            'next_item' => $this->faker->numberBetween(0,3)
         ];
     }
 }
