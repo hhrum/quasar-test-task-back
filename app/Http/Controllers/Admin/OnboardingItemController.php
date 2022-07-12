@@ -83,7 +83,7 @@ class OnboardingItemController extends Controller
             $path = $request->file('image')->store('images', 'public');
             $data['image'] = $path;
         }
-        $card = OnboardingItem::find($id)->update($data);
+        OnboardingItem::find($id)->update($data);
         return redirect()->route('admin.show', ['admin' => $id]);
     }
 
