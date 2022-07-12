@@ -24,9 +24,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'sex' => $this->faker->randomElement(['male', 'female']),
+            'sex' => $this->faker->randomElement(User::SEX),
             'birthday' => $this->faker->date(),
-            'phone' => $this->faker->phone()
+            'phone' => $this->faker->phoneNumber
         ];
     }
 }

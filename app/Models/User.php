@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    const SEX = ['male', 'female'];
     protected $guarded = [];
     public $timestamps = false;
 
