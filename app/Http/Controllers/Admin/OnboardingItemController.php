@@ -55,7 +55,7 @@ class OnboardingItemController extends Controller
      */
     public function show($id)
     {
-        return view('admin.show', ['card' => OnboardingItem::find($id) ]);
+        return view('admin.show', ['card' => OnboardingItem::find($id)]);
     }
 
     /**
@@ -66,7 +66,7 @@ class OnboardingItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.edit', ['card' => OnboardingItem::find($id)]);
     }
 
     /**
@@ -78,7 +78,13 @@ class OnboardingItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if (isset($request->image)) {
+            $path = $request->file('image')->store('images', 'public');
+            $data['image'] = $path;
+        }
+        $card = OnboardingItem::create($data);
+        return redirect()->route('admin.show', ['admin' => $card->id]);
     }
 
     /**

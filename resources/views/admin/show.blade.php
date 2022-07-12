@@ -7,6 +7,3 @@
         @endif
     </div>
 @endsection
-
-
-

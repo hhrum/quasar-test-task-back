@@ -10,16 +10,16 @@
             @endforeach
         </div>
     @endif
-
-    <form action="{{route('admin.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.update', ['admin' => $card->id])}}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('patch')
         <div class="mb-3">
             <label for="text" class="form-label">Текст карточки</label>
             <textarea class="form-control" name="text" placeholder=""
-                      style="height: 200px">{{old('text')}}</textarea>
+                      style="height: 200px"> {{$card->text}} </textarea>
         </div>
         <div class="mb-3">
-            <input class="form-control" type="file" name="image">
+            <input class="form-control" type="file" name="image" value="Изменить изображение">
         </div>
         <div class="mb-3">
             <input type="submit" class="btn btn-primary mb-3">

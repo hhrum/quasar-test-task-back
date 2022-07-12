@@ -24,7 +24,7 @@ class OnboardingItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'text' => 'required'
+            'text' => 'required|min:10|string'
         ];
     }
 }
