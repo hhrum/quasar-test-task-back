@@ -53,9 +53,9 @@ class OnboardingItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(OnboardingItem $board)
     {
-        return view('boards.show', ['board' => OnboardingItem::find($id)]);
+        return view('boards.show', ['board' => $board]);
     }
 
     /**
@@ -64,9 +64,9 @@ class OnboardingItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(OnboardingItem $board)
     {
-        return view('boards.edit', ['board' => OnboardingItem::find($id)]);
+        return view('boards.edit', ['board' => $board]);
     }
 
     /**
@@ -76,15 +76,15 @@ class OnboardingItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, OnboardingItem $board)
     {
         $data = $request->all();
         if (isset($request->image)) {
             $path = $request->file('image')->store('images', 'public');
             $data['image'] = $path;
         }
-        OnboardingItem::find($id)->update($data);
-        return redirect()->route('admin.boards.show', ['board' => $id]);
+        $board->update($data);
+        return redirect()->route('admin.boards.show', ['board' => $board->id]);
     }
 
     /**
@@ -93,9 +93,9 @@ class OnboardingItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(OnboardingItem $board)
     {
-        OnboardingItem::find($id)->delete();
+        $board->delete();
         return redirect()->route('admin.boards.index');
     }
 }
