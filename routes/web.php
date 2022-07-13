@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin', OnboardingItemController::class);
+Route::name('admin.')->group(function () {
+    Route::resource('boards', OnboardingItemController::class);
+});

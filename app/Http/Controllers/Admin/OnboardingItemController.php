@@ -17,7 +17,7 @@ class OnboardingItemController extends Controller
      */
     public function index()
     {
-        return view('admin.index', ['boardsList' => OnboardingItem::paginate(7)]);
+        return view('boards.index', ['boardsList' => OnboardingItem::paginate(7)]);
     }
 
     /**
@@ -27,7 +27,7 @@ class OnboardingItemController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('boards.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class OnboardingItemController extends Controller
             $data['image'] = $path;
         }
         $card = OnboardingItem::create($data);
-        return redirect()->route('admin.show', ['admin' => $card->id]);
+        return redirect()->route('admin.boards.show', ['board' => $card->id]);
     }
 
     /**
@@ -55,7 +55,7 @@ class OnboardingItemController extends Controller
      */
     public function show($id)
     {
-        return view('admin.show', ['card' => OnboardingItem::find($id)]);
+        return view('boards.show', ['card' => OnboardingItem::find($id)]);
     }
 
     /**
@@ -66,7 +66,7 @@ class OnboardingItemController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.edit', ['card' => OnboardingItem::find($id)]);
+        return view('boards.edit', ['card' => OnboardingItem::find($id)]);
     }
 
     /**
@@ -84,7 +84,7 @@ class OnboardingItemController extends Controller
             $data['image'] = $path;
         }
         OnboardingItem::find($id)->update($data);
-        return redirect()->route('admin.show', ['admin' => $id]);
+        return redirect()->route('admin.boards.show', ['board' => $id]);
     }
 
     /**
@@ -96,6 +96,6 @@ class OnboardingItemController extends Controller
     public function destroy($id)
     {
         OnboardingItem::find($id)->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.boards.index');
     }
 }

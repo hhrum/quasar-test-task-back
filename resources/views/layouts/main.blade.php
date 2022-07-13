@@ -12,7 +12,7 @@
     <style>
         table {
             table-layout: fixed;
-            width:100%
+            width:100%;
         }
         td {
             word-wrap:break-word;
@@ -22,10 +22,10 @@
 <body>
 <ul class="nav justify-content-center bg-dark">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{{route('admin.index')}}">Главная</a>
+        <a class="nav-link active" aria-current="page" href="{{route('admin.boards.index')}}">Главная</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{route('admin.create')}}">Добавить</a>
+        <a class="nav-link " href="{{route('admin.boards.create')}}">Добавить</a>
     </li>
 </ul>
 <div class="container-xl mt-3">
