@@ -55,7 +55,7 @@ class OnboardingItemController extends Controller
      */
     public function show($id)
     {
-        return view('boards.show', ['card' => OnboardingItem::find($id)]);
+        return view('boards.show', ['board' => OnboardingItem::find($id)]);
     }
 
     /**
@@ -66,7 +66,7 @@ class OnboardingItemController extends Controller
      */
     public function edit($id)
     {
-        return view('boards.edit', ['card' => OnboardingItem::find($id)]);
+        return view('boards.edit', ['board' => OnboardingItem::find($id)]);
     }
 
     /**
