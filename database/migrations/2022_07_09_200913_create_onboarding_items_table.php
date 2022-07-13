@@ -15,8 +15,8 @@ class CreateOnboardingItemsTable extends Migration
     {
         Schema::create('onboarding_items', function (Blueprint $table) {
             $table->id();
-            $table->string('text');
-            $table->string('image')->nullable();
+            $table->text('text');
+            $table->string('image');
         });
     }
 
