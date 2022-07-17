@@ -23,4 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('boards', OnboardingItemController::class);
 Route::apiResource('users', UserController::class);
 
-Route::get('users/getSex/{id}', [UserController::class, 'getSex']);
+Route::get('users/getSex', [UserController::class, 'getSex']);

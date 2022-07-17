@@ -64,8 +64,8 @@ class UserController extends Controller
         //
     }
 
-    public function getSex($id)
+    public function getSex()
     {
-        return User::select('sex')->findOrFail($id);
+        return User::SEX;
     }
 }
